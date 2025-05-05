@@ -15,3 +15,6 @@ import App from './App';
 //   });
 // });
 
+// describe('calculateTipAmount()', () => {
+//     it('')
+// })

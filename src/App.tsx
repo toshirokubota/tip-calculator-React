@@ -6,10 +6,10 @@ import TipCalculator from './components/TipCalculator'
 function App() {
 
   return (
-    <>
+    <div className='w-full md:w-min'>
       <Header />
       <TipCalculator />
-    </>
+    </div>
   )
 }
 

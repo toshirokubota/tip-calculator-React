@@ -5,8 +5,18 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --desaturated-red: 13 70% 61%;
+  --strong-cyan: 172 67% 45%;
+  --weak-cyan:173 61% 77%;
+  --very-dark-cyan: 183 100% 15%;
+  --dark-grayish-cyan: 186 14% 43%;
+  --grayish-cyan: 184 14% 56%;
+  --light-grayish-cyan: 185 41% 84%;
+  --very-light-grayish-cyan: 189 41% 97%;
+  --white: 0 0% 100%;
+
+  color: hsl(var(--white));
+  background-color: hsl(var(--light-grayish-cyan));
 }
 
 body {

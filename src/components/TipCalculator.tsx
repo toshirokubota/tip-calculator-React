@@ -1,16 +1,17 @@
-import React, { createContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TipForm from './TipForm';
 import ResultCard from './ResultCard';
 import { TipObject } from '../types';
 
 
 export default function TipCalculator() : React.JSX.Element {
-    const [tipObj, setTipObj] = useState<TipObject>({bill: 0, percentage: 15, numPersons: 0});
+    const [tipObj, setTipObj] = useState<TipObject>({bill: 0, percentage: 15, numPersons: 1});
+    const [reset, setReset] = useState<boolean>(false);
 
     return (
         <div className={'calculator'}>
-            <TipForm tipObj={tipObj} setTipObj={setTipObj}/>
-            <ResultCard tipObj={tipObj} setTipObj={setTipObj}/>
+            <TipForm tipObj={tipObj} setTipObj={setTipObj} reset={reset} setReset={setReset}/>
+            <ResultCard tipObj={tipObj} setReset={setReset}/>
         </div>
     )
 }

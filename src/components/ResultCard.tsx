@@ -2,29 +2,25 @@ import React from 'react';
 import { TipObject } from '../types';
 import { calculateTipAmount, calculateTotalAmount } from '../libs';
 
-export default function ResultCard({tipObj, setTipObj}:
+export default function ResultCard({tipObj, setReset}:
     {
         tipObj: TipObject,
-        setTipObj: React.Dispatch<React.SetStateAction<TipObject>>
+        setReset: React.Dispatch<React.SetStateAction<boolean>>
     }) : React.JSX.Element {
 
     const tipAmount = calculateTipAmount(tipObj.bill, tipObj.percentage);
     const totalAmount = calculateTotalAmount(tipObj.bill, tipObj.percentage);
-    const tipPerPerson = tipObj.numPersons > 0 ? tipAmount / tipObj.numPersons: 'NA';
-    const totalPerPerson = tipObj.numPersons > 0 ? totalAmount / tipObj.numPersons: 'NA';
-
-    function resetTipObj() {
-        setTipObj({bill: 0, percentage: 15, numPersons: 0});
-    }
+    const tipPerPerson = tipObj.numPersons > 0 ? (tipAmount / tipObj.numPersons).toFixed(2): 'NA';
+    const totalPerPerson = tipObj.numPersons > 0 ? (totalAmount / tipObj.numPersons).toFixed(2): 'NA';
     
     return (
         <div className="result-card">
         <div className="result-entry">
           <div className="result-caption">
-            <h2>
+            <h2 className='text-lg font-bold'>
               Tip Amount
             </h2>
-            <h3>
+            <h3 className='text-sm'>
               / person
             </h3>
           </div>
@@ -32,16 +28,16 @@ export default function ResultCard({tipObj, setTipObj}:
         </div>
         <div className="result-entry">
           <div className="result-caption">
-            <h2>
+            <h2 className='text-lg font-bold'>
               Total
             </h2>
-            <h3>
+            <h3 className='text-sm'>
               / person
             </h3>
           </div>
           <div id="total-amount" className="result-dollars error-target">{totalPerPerson}</div>
         </div>    
-        <button id="reset-button" onClick={resetTipObj}>Reset</button>
+        <button id="reset-button" onClick={()=>setReset(true)}>Reset</button>
       </div>
         
     )

@@ -1,54 +1,60 @@
-# React + TypeScript + Vite
+# Frontend Mentor - Tip calculator app solution
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a solution to the [Tip calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### The challenge
 
-## Expanding the ESLint configuration
+Users should be able to:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Calculate the correct tip and total cost of the bill per person
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Screenshot
+
+![screenshot - Desktop version](./screenshotDesktop.png)
+![screenshot - Mobile version](./screenshotMobile.png)
+
+### Links
+
+- Solution URL: [https://github.com/toshirokubota/tip-calculator-app](https://github.com/toshirokubota/tip-calculator-app)
+- Live Site URL: [https://toshirokubota.github.io/tip-calculator-app/](https://toshirokubota.github.io/tip-calculator-app/)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+
+### What I learned
+
+- I learned the DRY principle and tried to follow the practice on my script.
+
+- This is something I could not figure out. 
+I made the tip choice radio buttons so that only one can be selected. I set its display to none so that the default look of radio buttons are hidden. By doing so, I could not use tab to select each radio button, and thus select it via keyboard. So this app can be used only with a pointer device. I am not sure if there is a getting around or using radio buttons is a wrong design choice.
+
+- The form was responding to a RETURN key on input boxes. I had to disable the behavior and I did so through javascript. I saw an article on StackOverflow using the following.
+``` 
+<form ... onkeydown="return event.key != 'Enter';">
 ```
+This is definitely shorter than my scripting but I did not put an explicit code in html. (I felt it did not look good.) Wonder if one is better than the other.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Useful resources
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- [Prevent users from submitting a form by hitting Enter](https://stackoverflow.com/questions/895171/prevent-users-from-submitting-a-form-by-hitting-enter?page=1&tab=scoredesc#tab-top) - This is a StackOverflow article titled: Prevent users from submitting a form by hitting Enter.
+
+## Author
+
+- Frontend Mentor - [@toshirokubota](https://www.frontendmentor.io/profile/toshirokubota)
+
+## Acknowledgments
+
+- I am having difficulty of form resetting. It is done from the ResultCard and I want to propagate the action into TipForm so that it can reset its state and presentation. The issue is that the input box for custom percentage needs to be closed and 15% button needs to be selected. However, just the state of the TipObj cannot tell if it is being resetted by the ResultCard or happened to be that way by manual input into the default state. So only solution is to send additional information about occurrence of resetting. 
+
