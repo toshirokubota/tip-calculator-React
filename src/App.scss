@@ -77,11 +77,6 @@ form {
     input.error-target.invalid {
         border: solid 1pt hsl(var(--desaturated-red));
     }
-    // .input-head {
-    //     display: flex;
-    //     flex-direction: row;
-    //     justify-content: space-between;
-    // }
     input[type="radio"] {
         //display: none;
         opacity: 0;

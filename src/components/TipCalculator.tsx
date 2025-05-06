@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import TipForm from './TipForm';
 import ResultCard from './ResultCard';
 import { TipObject } from '../types';

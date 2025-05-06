@@ -8,5 +8,5 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-  base: '/tip-calculator-app'
+  base: '/tip-calculator-React'
 })
