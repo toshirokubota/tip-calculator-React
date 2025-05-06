@@ -18,16 +18,6 @@ export default function TipForm({tipObj, setTipObj, reset, setReset}:
       customPercentage: '',
       numPersons: '',
     });
-    const validator = (name: string, value: string) => {
-      const num = Number(value);
-      console.log('validator', name, num);
-      switch(name) {
-        case 'bill': return (!isNaN(num) && num >= 0);
-        case 'percentage': return (!isNaN(num) && num >= 0);
-        case 'numPersons': return !isNaN(num) && num >= 0 && Number.isInteger(num);
-        default: return false;
-      }
-    }
     const [errorFlag, setErrorFlag] = useState({
       bill: false,
       percentage: false,
@@ -45,11 +35,23 @@ export default function TipForm({tipObj, setTipObj, reset, setReset}:
         });
         setTipObj({
           bill: 0, percentage: 15, numPersons: 1
-        })
+        });
+        setErrorFlag({bill: false, percentage: false, numPersons: false});
         setCustomPercentageActive(false);
         setReset(false);
       }
     }, [reset]);
+
+    const validator = (name: string, value: string) => {
+      const num = Number(value);
+      console.log('validator', name, num);
+      switch(name) {
+        case 'bill': return (!isNaN(num) && num >= 0);
+        case 'percentage': return (!isNaN(num) && num >= 0);
+        case 'numPersons': return !isNaN(num) && num >= 0 && Number.isInteger(num);
+        default: return false;
+      }
+    }
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
       const name = (event.target as HTMLInputElement).name;
@@ -81,16 +83,12 @@ export default function TipForm({tipObj, setTipObj, reset, setReset}:
       console.log('handleChange', errorFlag);
     }
 
-    const styleBill = errorFlag.bill ? {borderColor: 'var(--color-red-500)'}: {};
-    const stylePercentage = errorFlag.percentage ? {borderColor: 'var(--color-red-500)'}: {};
-    const styleNumPersons = errorFlag.numPersons ? {borderColor: 'var(--color-red-500)'}: {};
-
   return (
     <form className='flex flex-col gap-4'>
       <div className="input-card flex flex-col gap-4">
         <div className="bill">
-          <div className="input-head">
-            <h1 className='text-base font-bold'>Bill</h1>
+          <div className="flex flex-row justify-between">
+            <label htmlFor='bill-dollars' className='text-base font-bold dark-grayish-cyan'>Bill</label>
             {errorFlag.bill && <p className="text-sm error-msg">Invalid bill amount</p>}
           </div>
           <input
@@ -101,12 +99,12 @@ export default function TipForm({tipObj, setTipObj, reset, setReset}:
             className={`error-target ${errorFlag.bill ? 'invalid': ''}`}
             value={formData.bill}
             onChange={handleChange}
-            style={{backgroundImage: `${staticAsset('/images/icon-dollar.svg)')}`}}
+            style={{backgroundImage: `url(${staticAsset('/images/icon-dollar.svg')})`}}
           />
         </div>
         <div className="tip">
-          <div className="input-head">
-            <h1 className='text-base font-bold'>Select Tip %</h1>
+          <div className="flex flex-row justify-between">
+            <h1 className='text-base font-bold dark-grayish-cyan'>Select Tip %</h1>
             {(errorFlag.percentage) && <p className="text-sm error-msg">Invalid tip percentage</p>}
           </div>
           <fieldset className="tip-selection">
@@ -148,16 +146,16 @@ export default function TipForm({tipObj, setTipObj, reset, setReset}:
                 className={`error-target ${errorFlag.percentage ? 'invalid': ''}`}
                 value={formData.customPercentage}
                 onChange={handleChange}
-                style={stylePercentage}
               />
+              <label htmlFor="custom-perc-input" className="sr-only">Custom Input</label>
               <span>%</span>
             </div>
           </fieldset>
         </div>
         <div className="party">
-          <div>
-            <h1 className='text-base font-bold'>Number of People</h1>
-            {errorFlag.numPersons && <p className="text-sm error-msg">Invalid # of people</p>}
+          <div className="flex flex-row justify-between">
+            <label htmlFor='num-people' className='text-base font-bold dark-grayish-cyan'>Number of People</label>
+            {errorFlag.numPersons && <p className="text-sm error-msg">Invalid # people</p>}
           </div>
           <input
             type="text"
@@ -167,7 +165,7 @@ export default function TipForm({tipObj, setTipObj, reset, setReset}:
             className={`error-target ${errorFlag.numPersons ? 'invalid': ''}`}
             value={formData.numPersons}
             onChange={handleChange}
-            style={styleNumPersons} /*{{backgroundImage: `url(${staticAsset('/images/icon-person.svg')})`}}*/
+            style={{backgroundImage: `url(${staticAsset('/images/icon-person.svg')})`}}
           />
         </div>
       </div>

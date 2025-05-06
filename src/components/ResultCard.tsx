@@ -15,8 +15,8 @@ export default function ResultCard({tipObj, setReset}:
     
     return (
         <div className="result-card">
-        <div className="result-entry">
-          <div className="result-caption">
+        <div className="flex flex-row justify-between">
+          <div>
             <h2 className='text-lg font-bold'>
               Tip Amount
             </h2>
@@ -24,10 +24,10 @@ export default function ResultCard({tipObj, setReset}:
               / person
             </h3>
           </div>
-          <div id="tip-amount" className="result-dollars error-target">{tipPerPerson}</div>
+          <div id="tip-amount" data-testid='tip-amount' className="result-dollars text-3xl font-bold">{tipPerPerson}</div>
         </div>
-        <div className="result-entry">
-          <div className="result-caption">
+        <div className="flex flex-row justify-between">
+          <div>
             <h2 className='text-lg font-bold'>
               Total
             </h2>
@@ -35,7 +35,7 @@ export default function ResultCard({tipObj, setReset}:
               / person
             </h3>
           </div>
-          <div id="total-amount" className="result-dollars error-target">{totalPerPerson}</div>
+          <div id="total-amount" data-testid='total-amount' className="result-dollars text-3xl font-bold">{totalPerPerson}</div>
         </div>    
         <button id="reset-button" onClick={()=>setReset(true)}>Reset</button>
       </div>

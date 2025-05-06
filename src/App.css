@@ -19,7 +19,7 @@ header {
   padding: 16px;
 }
 
-h1 {
+.dark-grayish-cyan {
   color: hsl(var(--dark-grayish-cyan));
 }
 
@@ -29,6 +29,12 @@ h2 {
 
 h3 {
   color: hsl(var(--grayish-cyan));
+}
+
+.error-msg {
+  font-size: 10px;
+  line-height: 24px;
+  color: hsl(var(--desaturated-red));
 }
 
 form .input-card > * {
@@ -54,18 +60,7 @@ form .radio-container {
   width: 100%;
   height: 48px;
 }
-
-.result-card {
-  background-color: hsl(var(--very-dark-cyan));
-  padding: 12px;
-  position: relative;
-}
-
-.result-card > * + * {
-  margin-top: 32px;
-}
-
-input[type=text] {
+form input[type=text] {
   width: 100%;
   height: 32px;
   text-align: right;
@@ -75,46 +70,26 @@ input[type=text] {
   border: solid 0pt hsl(var(--strong-cyan));
   border-radius: 5px;
   color: hsl(var(--very-dark-cyan));
+  outline: none;
 }
-
-input[type=text]:hover, input[type=text]:focus {
+form input[type=text]:hover, form input[type=text]:focus {
   cursor: pointer;
   border-width: 1pt;
 }
-
-input.error-target.invalid {
+form input.error-target.invalid {
   border: solid 1pt hsl(var(--desaturated-red));
 }
-
-.result-card .error-target.invalid {
-  color: hsl(var(--desaturated-red));
-}
-
-.input-head {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.error-msg {
-  font-size: 10px;
-  line-height: 24px;
-  color: hsl(var(--desaturated-red));
-}
-
-input[type=radio] {
+form input[type=radio] {
   display: none;
 }
-
-.tip-selection {
+form .tip-selection {
   border: none;
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
 }
-
-.tip-selection input + label {
+form .tip-selection input + label {
   display: inline-block;
   width: 100%;
   height: 100%;
@@ -127,24 +102,16 @@ input[type=radio] {
   z-index: 1;
   border-radius: 5px;
 }
-
-.tip-selection input[type=radio]:checked + label {
+form .tip-selection input[type=radio]:checked + label {
   background-color: hsl(var(--strong-cyan));
   color: hsl(var(--very-dark-cyan));
 }
-
-.tip-selection input + label:hover, .tip-selection input + label:focus {
+form .tip-selection input + label:hover, form .tip-selection input + label:focus {
   cursor: pointer;
   background-color: hsl(var(--weak-cyan));
   color: hsl(var(--very-dark-cyan));
 }
-
-#reset-button:hover, #reset-button:focus {
-  cursor: pointer;
-  background-color: hsl(var(--weak-cyan));
-}
-
-.custom > input + label {
+form .custom > input + label {
   position: absolute;
   top: 0;
   left: 0;
@@ -152,8 +119,7 @@ input[type=radio] {
   background-color: hsl(var(--very-light-grayish-cyan));
   color: hsl(var(--grayish-cyan));
 }
-
-.custom > span {
+form .custom > span {
   display: inline-block;
   position: relative;
   margin-left: calc(100% - 20px);
@@ -161,29 +127,32 @@ input[type=radio] {
   line-height: 48px;
   color: hsl(var(--light-grayish-cyan));
 }
-
-.custom input[type=radio]:checked + label {
+form .custom input[type=radio]:checked + label {
   visibility: hidden;
 }
-
-.custom input[type=radio]:not(:checked) + label {
+form .custom input[type=radio]:not(:checked) + label {
   visibility: visible;
 }
 
-.result-entry {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.result-card {
+  background-color: hsl(var(--very-dark-cyan));
+  padding: 12px;
+  position: relative;
 }
-
-.result-dollars {
-  font-size: 32px;
-  font-weight: bold;
-  letter-spacing: -0.67px;
+.result-card > * + * {
+  margin-top: 32px;
+}
+.result-card .error-target.invalid {
+  color: hsl(var(--desaturated-red));
+}
+.result-card #reset-button:hover, .result-card #reset-button:focus {
+  cursor: pointer;
+  background-color: hsl(var(--weak-cyan));
+}
+.result-card .result-dollars {
   color: hsl(var(--strong-cyan));
 }
-
-#reset-button {
+.result-card #reset-button {
   display: block;
   width: 85%;
   height: 48px;
@@ -213,6 +182,9 @@ input[type=radio] {
   .result-card {
     flex: 1 1 50%;
     border-radius: 1rem;
+  }
+  .result-entry {
+    margin-block: 3rem;
   }
   .tip-selection {
     grid-template-columns: repeat(3, 1fr);
