@@ -142,9 +142,6 @@ form .custom input[type=radio]:not(:checked) + label {
 .result-card > * + * {
   margin-top: 32px;
 }
-.result-card .error-target.invalid {
-  color: hsl(var(--desaturated-red));
-}
 .result-card #reset-button:hover, .result-card #reset-button:focus {
   cursor: pointer;
   background-color: hsl(var(--weak-cyan));

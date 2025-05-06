@@ -27,7 +27,7 @@ export default function TipForm({tipObj, setTipObj, reset, setReset}:
     useEffect(() => {
       if(reset) {
         setFormData(prev => {
-          console.log(reset, prev, tipObj); 
+          //console.log(reset, prev, tipObj); 
           return ({...prev, 
           bill:'0', 
           percentage:'15', 
@@ -44,7 +44,7 @@ export default function TipForm({tipObj, setTipObj, reset, setReset}:
 
     const validator = (name: string, value: string) => {
       const num = Number(value);
-      console.log('validator', name, num);
+      // console.log('validator', name, num);
       switch(name) {
         case 'bill': return (!isNaN(num) && num >= 0);
         case 'percentage': return (!isNaN(num) && num >= 0);
@@ -61,11 +61,11 @@ export default function TipForm({tipObj, setTipObj, reset, setReset}:
         if(event.target.id === "custom-perc-input" || event.target.id === "custom-perc"){
           setFormData(prev=> ({...prev, customPercentage: value}));
           setCustomPercentageActive(true);
-          console.log(name, value, formData);
+          // console.log(name, value, formData);
         } else {
           setFormData(prev=> ({...prev, percentage: value}));
           setCustomPercentageActive(false);
-          console.log(name, value, formData);
+          // console.log(name, value, formData);
         }
       } else {
         setFormData(prev => ({...prev, [name]: value}))
@@ -80,7 +80,7 @@ export default function TipForm({tipObj, setTipObj, reset, setReset}:
       } else {
         setErrorFlag(prev => ({...prev, [name]: true}))
       }
-      console.log('handleChange', errorFlag);
+      // console.log('handleChange', errorFlag);
     }
 
   return (

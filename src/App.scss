@@ -148,9 +148,9 @@ form {
     & > * + * {
         margin-top: 32px;
     }
-    .error-target.invalid {
-        color: hsl(var(--desaturated-red));
-    }
+    // .error-target.invalid {
+    //     color: hsl(var(--desaturated-red));
+    // }
     #reset-button:hover, #reset-button:focus {
         cursor: pointer;
         background-color: hsl(var(--weak-cyan));
