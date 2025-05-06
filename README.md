@@ -31,6 +31,12 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
+- React
+- Tailwind CSS
+- SCSS/SASS
+- Vite
+- Vitest
+- testing-library
 
 ### What I learned
 
@@ -48,13 +54,9 @@ This is definitely shorter than my scripting but I did not put an explicit code 
 
 ### Useful resources
 
-- [Prevent users from submitting a form by hitting Enter](https://stackoverflow.com/questions/895171/prevent-users-from-submitting-a-form-by-hitting-enter?page=1&tab=scoredesc#tab-top) - This is a StackOverflow article titled: Prevent users from submitting a form by hitting Enter.
-
 ## Author
 
 - Frontend Mentor - [@toshirokubota](https://www.frontendmentor.io/profile/toshirokubota)
 
 ## Acknowledgments
-
-- I am having difficulty of form resetting. It is done from the ResultCard and I want to propagate the action into TipForm so that it can reset its state and presentation. The issue is that the input box for custom percentage needs to be closed and 15% button needs to be selected. However, just the state of the TipObj cannot tell if it is being resetted by the ResultCard or happened to be that way by manual input into the default state. So only solution is to send additional information about occurrence of resetting. 
 

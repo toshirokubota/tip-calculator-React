@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import { TipObject } from "../types";
 import { staticAsset } from "../libs";
 
-export default function TipForm({tipObj, setTipObj, reset, setReset}:
+export default function TipForm({tipObj, setTipObj, reset, setReset, setError}:
     {
         tipObj: TipObject,
         setTipObj: React.Dispatch<React.SetStateAction<TipObject>>,
         reset: boolean,
         setReset: React.Dispatch<React.SetStateAction<boolean>>,
+        setError: React.Dispatch<React.SetStateAction<boolean>>
     }): React.JSX.Element {
 
     const [customPercentageActive, setCustomPercentageActive] = useState<boolean>(false);
@@ -23,7 +24,14 @@ export default function TipForm({tipObj, setTipObj, reset, setReset}:
       percentage: false,
       numPersons: false,
     });
-
+    //initialize the form data according to the tip object
+    useEffect(()=>{
+      setFormData(prev => ({...prev, 
+        bill: tipObj.bill.toString(), 
+        percentage: tipObj.percentage.toString(), 
+        numPersons: tipObj.numPersons.toString()}))
+    }, []);
+    //reset all the states except the custom tip value
     useEffect(() => {
       if(reset) {
         setFormData(prev => {
@@ -42,13 +50,22 @@ export default function TipForm({tipObj, setTipObj, reset, setReset}:
       }
     }, [reset]);
 
+    //error state update
+    useEffect(()=>{
+      if(Object.values(errorFlag).some(Boolean)) {
+        setError(true);
+      } else {
+        setError(false);
+      }
+    }, [errorFlag]);
+
     const validator = (name: string, value: string) => {
       const num = Number(value);
       // console.log('validator', name, num);
       switch(name) {
         case 'bill': return (!isNaN(num) && num >= 0);
         case 'percentage': return (!isNaN(num) && num >= 0);
-        case 'numPersons': return !isNaN(num) && num >= 0 && Number.isInteger(num);
+        case 'numPersons': return !isNaN(num) && num > 0 && Number.isInteger(num);
         default: return false;
       }
     }
@@ -80,7 +97,6 @@ export default function TipForm({tipObj, setTipObj, reset, setReset}:
       } else {
         setErrorFlag(prev => ({...prev, [name]: true}))
       }
-      // console.log('handleChange', errorFlag);
     }
 
   return (

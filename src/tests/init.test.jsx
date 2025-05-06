@@ -2,18 +2,12 @@ import { render, screen } from '@testing-library/react';
 import App from '../App';
 
 describe('App', () => {
-  it('renders', () => {
+  it('renders elements', () => {
     render(<App />);
 
     expect(screen.queryByText('Tip Amount')).toBeVisible();
+    expect(screen.queryByText('Select Tip %')).toBeVisible();
   });
 });
 
-describe('App', () => {
-    it('renders', () => {
-      render(<App />);
-  
-      expect(screen.queryByText('Select Tip %')).toBeVisible();
-    });
-  });
   

@@ -80,7 +80,8 @@ form input.error-target.invalid {
   border: solid 1pt hsl(var(--desaturated-red));
 }
 form input[type=radio] {
-  display: none;
+  opacity: 0;
+  position: absolute;
 }
 form .tip-selection {
   border: none;
@@ -106,7 +107,7 @@ form .tip-selection input[type=radio]:checked + label {
   background-color: hsl(var(--strong-cyan));
   color: hsl(var(--very-dark-cyan));
 }
-form .tip-selection input + label:hover, form .tip-selection input + label:focus {
+form .tip-selection input:hover + label, form .tip-selection input:focus + label, form .tip-selection input:focus + label:focus {
   cursor: pointer;
   background-color: hsl(var(--weak-cyan));
   color: hsl(var(--very-dark-cyan));
@@ -149,6 +150,9 @@ form .custom input[type=radio]:not(:checked) + label {
 .result-card .result-dollars {
   color: hsl(var(--strong-cyan));
 }
+.result-card .result-dollars.invalid {
+  color: hsl(var(--desaturated-red));
+}
 .result-card #reset-button {
   display: block;
   width: 85%;
@@ -165,10 +169,10 @@ form .custom input[type=radio]:not(:checked) + label {
   border: none;
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 640px) {
   .calculator {
     width: inherit;
-    min-width: 700px;
+    min-width: 640px;
     border-radius: 16px;
     flex-direction: row;
     gap: 2rem;
